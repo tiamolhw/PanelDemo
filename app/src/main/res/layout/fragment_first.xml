@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="cn.playerjava.paneldemo.FirstFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f4f4f4"
+        tools:context=".communicate.ui.ChatFragment"
+        android:fitsSystemWindows="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_chat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:title="这是第一个fragment">
+            <Button
+                android:id="@+id/btn_about_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一页"
+                android:layout_gravity="end"
+                android:onClick="@{(theView) -> fragment.onGoToNext(theView)}"
+                android:src="@drawable/btn_about_friend"
+                android:layout_marginEnd="19dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#CECED6" />
+
+        <com.effective.android.panel.view.PanelSwitchLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:animationSpeed="fast"
+            android:orientation="vertical">
+            <com.effective.android.panel.view.content.LinearContentContainer
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:edit_view="@id/et_input_message"
+                app:auto_reset_enable="true">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_chat_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#CECED6" />
+
+                    <EditText
+                        android:id="@+id/et_input_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:paddingStart="8dp"
+                        android:text=""
+                        android:background="@color/white"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="100dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#CECED6"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageButton
+                        android:id="@+id/btn_send_menu"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/btn_send_menu"
+                        android:background="#00000000"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
+
+                    <ImageButton
+                        android:id="@+id/btn_send_face"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:src="@drawable/btn_send_face"
+                        android:background="#00000000"
+                        android:layout_toStartOf="@id/btn_send_menu"
+                        android:layout_marginEnd="16dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </com.effective.android.panel.view.content.LinearContentContainer>
+            <com.effective.android.panel.view.panel.PanelContainer
+                android:id="@+id/panel_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.effective.android.panel.view.panel.PanelView
+                    android:id="@+id/panel_emotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:panel_layout="@layout/panel_send"
+                    app:panel_trigger="@id/btn_send_menu"/>
+            </com.effective.android.panel.view.panel.PanelContainer>
+        </com.effective.android.panel.view.PanelSwitchLayout>
+    </LinearLayout>
+</layout>
